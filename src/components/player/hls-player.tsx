@@ -135,7 +135,7 @@ export function HlsPlayer({ streams, onEnded }: HlsPlayerProps) {
             {/* Video Container */}
             <div
                 ref={containerRef}
-                className="relative aspect-video bg-black rounded-2xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10"
+                className="relative aspect-video bg-black rounded-2xl overflow-hidden border border-gray-400/20 shadow-2xl shadow-gray-400/10"
             >
                 {showEmbed ? (
                     <iframe
@@ -160,7 +160,7 @@ export function HlsPlayer({ streams, onEnded }: HlsPlayerProps) {
             {/* Server Selection */}
             <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 border border-gray-800">
                 <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold text-purple-400 flex items-center gap-2">
+                    <h3 className="font-semibold text-white flex items-center gap-2">
                         <Settings className="w-4 h-4" />
                         Pilih Server
                     </h3>

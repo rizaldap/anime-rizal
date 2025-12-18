@@ -28,11 +28,23 @@ export default function RootLayout({
   return (
     <html lang="id" className="dark">
       <body className={`${inter.className} min-h-screen antialiased`}>
-        {/* Noise overlay for texture */}
+        {/* Background Effects */}
+        <div className="anime-grid-bg" />
+        <div className="gradient-mesh" />
+        <div className="spotlight" />
+        <div className="vignette" />
+
+        {/* Glowing Orbs */}
+        <div className="glow-orb glow-orb-1" />
+        <div className="glow-orb glow-orb-2" />
+        <div className="glow-orb glow-orb-3" />
+
+        {/* Texture Overlays */}
         <div className="noise-overlay" />
+        <div className="scan-line" />
 
         <Header />
-        <main className="min-h-[calc(100vh-4rem)]">
+        <main className="min-h-[calc(100vh-4rem)] pt-20">
           {children}
         </main>
         <footer className="border-t border-[var(--border-subtle)] py-8 mt-12">

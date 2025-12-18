@@ -11,7 +11,7 @@ interface AnimeCardProps {
 export function AnimeCard({ anime }: AnimeCardProps) {
     return (
         <Link href={`/anime/${anime.slug}`} className="group block">
-            <div className="relative overflow-hidden rounded-xl bg-gray-900 aspect-[3/4] transition-all duration-300 group-hover:ring-2 group-hover:ring-purple-500 group-hover:shadow-xl group-hover:shadow-purple-500/20">
+            <div className="relative overflow-hidden rounded-xl bg-gray-900 aspect-[3/4] transition-all duration-300 group-hover:ring-2 group-hover:ring-gray-400 group-hover:shadow-xl group-hover:shadow-gray-400/20">
                 {/* Poster */}
                 {anime.poster ? (
                     <Image
@@ -23,7 +23,7 @@ export function AnimeCard({ anime }: AnimeCardProps) {
                         unoptimized
                     />
                 ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-gray-900 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-900 flex items-center justify-center">
                         <span className="text-4xl">🎬</span>
                     </div>
                 )}
@@ -33,7 +33,7 @@ export function AnimeCard({ anime }: AnimeCardProps) {
 
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50">
+                    <div className="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center shadow-lg shadow-gray-400/50">
                         <Play className="w-6 h-6 text-white ml-1" fill="white" />
                     </div>
                 </div>
@@ -41,7 +41,7 @@ export function AnimeCard({ anime }: AnimeCardProps) {
                 {/* Episode badge */}
                 {anime.episode && (
                     <div className="absolute top-2 left-2">
-                        <Badge variant="default" className="bg-purple-600/90 border-0">
+                        <Badge variant="default" className="bg-gray-700/90 border-0">
                             {anime.episode}
                         </Badge>
                     </div>
@@ -56,7 +56,7 @@ export function AnimeCard({ anime }: AnimeCardProps) {
 
                 {/* Title */}
                 <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <h3 className="text-sm font-semibold line-clamp-2 text-white group-hover:text-purple-300 transition-colors">
+                    <h3 className="text-sm font-semibold line-clamp-2 text-white group-hover:text-white transition-colors">
                         {anime.title}
                     </h3>
                     {anime.type && (

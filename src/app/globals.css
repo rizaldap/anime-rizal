@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Minimalist Black & White Theme - Matching rizalprofile */
+  /* Minimalist Black & White Theme - Pure Monochrome */
   --bg-primary: #000000;
   --bg-secondary: #0a0a0a;
   --bg-tertiary: #111111;
@@ -24,15 +24,9 @@
   --accent-dim: rgba(255, 255, 255, 0.8);
   --accent-glow: rgba(255, 255, 255, 0.15);
 
-  /* Purple Accent (for anime/stream vibe) */
-  --accent-purple: #8b5cf6;
-  --accent-purple-dim: rgba(139, 92, 246, 0.8);
-  --accent-purple-glow: rgba(139, 92, 246, 0.3);
-
   /* Shadows */
   --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 60px rgba(255, 255, 255, 0.05);
-  --shadow-purple: 0 0 40px -10px rgba(139, 92, 246, 0.5);
 
   /* Blur */
   --blur-glass: blur(20px);
@@ -142,11 +136,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   }
 
   50% {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -213,7 +207,7 @@ body {
 }
 
 .hover-glow:hover {
-  box-shadow: var(--shadow-purple);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
 }
 
 /* Card Styles */
@@ -238,7 +232,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.03) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -248,15 +242,8 @@ body {
   opacity: 1;
 }
 
-/* Gradient Text */
+/* Gradient Text - White to Gray */
 .gradient-text {
-  background: linear-gradient(to right, #a855f7, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-white {
   background: linear-gradient(to right, #ffffff, #888888);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -283,9 +270,9 @@ body {
   scrollbar-width: none;
 }
 
-/* Focus styles */
+/* Focus styles - White accent */
 *:focus-visible {
-  outline: 2px solid var(--accent-purple);
+  outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
 
@@ -309,8 +296,149 @@ img {
   height: 100%;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.02;
+  opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Anime Grid Background */
+.anime-grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glowing Orbs - Anime Style */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glow-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  animation: orb-float 20s ease-in-out infinite;
+}
+
+.glow-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  bottom: -150px;
+  left: -100px;
+  animation: orb-float 25s ease-in-out infinite reverse;
+}
+
+.glow-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: orb-pulse 15s ease-in-out infinite;
+}
+
+@keyframes orb-float {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(-30px, -10px) scale(1.02);
+  }
+}
+
+@keyframes orb-pulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Gradient Mesh Background */
+.gradient-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background:
+    radial-gradient(at 80% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(at 80% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Spotlight Effect */
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60vh;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Animated Scan Line (subtle) */
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.005) 2px,
+      rgba(255, 255, 255, 0.005) 4px);
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* Vignette Effect */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Grid Background */
@@ -327,6 +455,37 @@ img {
   border: 1px solid var(--border-subtle);
   border-radius: 1rem;
   overflow: hidden;
+}
+
+/* Button - Minimalist White */
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Staggered animation delays */

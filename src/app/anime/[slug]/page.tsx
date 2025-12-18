@@ -51,12 +51,12 @@ export default async function AnimePage({ params }: Props) {
             {/* Breadcrumb */}
             <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center gap-2 text-sm text-gray-400">
-                    <Link href="/" className="hover:text-purple-400 flex items-center gap-1">
+                    <Link href="/" className="hover:text-white flex items-center gap-1">
                         <Home className="w-4 h-4" />
                         Home
                     </Link>
                     <ChevronRight className="w-4 h-4" />
-                    <span className="text-purple-300 truncate max-w-xs">{anime.title}</span>
+                    <span className="text-white truncate max-w-xs">{anime.title}</span>
                 </div>
             </nav>
 
@@ -79,7 +79,7 @@ export default async function AnimePage({ params }: Props) {
                     <div className="flex flex-col md:flex-row gap-8">
                         {/* Poster */}
                         <div className="w-48 md:w-64 flex-shrink-0 mx-auto md:mx-0">
-                            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 border border-purple-500/20">
+                            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-gray-400/20 border border-gray-400/20">
                                 {anime.poster ? (
                                     <Image
                                         src={anime.poster}
@@ -90,7 +90,7 @@ export default async function AnimePage({ params }: Props) {
                                         priority
                                     />
                                 ) : (
-                                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-gray-900 flex items-center justify-center">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-900 flex items-center justify-center">
                                         <Film className="w-16 h-16 text-gray-600" />
                                     </div>
                                 )}
@@ -124,7 +124,7 @@ export default async function AnimePage({ params }: Props) {
                             {anime.genres && anime.genres.length > 0 && (
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {anime.genres.map((genre, i) => (
-                                        <Badge key={i} variant="outline" className="bg-purple-600/10">
+                                        <Badge key={i} variant="outline" className="bg-gray-700/10">
                                             {genre}
                                         </Badge>
                                     ))}
@@ -133,7 +133,7 @@ export default async function AnimePage({ params }: Props) {
 
                             {/* Synopsis */}
                             <div className="mb-6">
-                                <h3 className="font-semibold text-lg mb-2 text-purple-300">Sinopsis</h3>
+                                <h3 className="font-semibold text-lg mb-2 text-white">Sinopsis</h3>
                                 <p className="text-gray-300 leading-relaxed line-clamp-4 md:line-clamp-none">
                                     {anime.synopsis || "Sinopsis tidak tersedia."}
                                 </p>
@@ -157,7 +157,7 @@ export default async function AnimePage({ params }: Props) {
             <section className="container mx-auto px-4 py-8">
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
                     <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                        <Film className="w-6 h-6 text-purple-400" />
+                        <Film className="w-6 h-6 text-white" />
                         Daftar Episode
                         <Badge variant="secondary">{anime.episodes?.length || 0}</Badge>
                     </h2>
@@ -168,7 +168,7 @@ export default async function AnimePage({ params }: Props) {
                                 <Link
                                     key={ep.id}
                                     href={`/watch/${anime.slug}?ep=${ep.slug}`}
-                                    className="bg-gray-800 hover:bg-purple-600 text-center py-3 px-2 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-purple-500/20 border border-gray-700 hover:border-purple-500 text-sm"
+                                    className="bg-gray-800 hover:bg-gray-700 text-center py-3 px-2 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-gray-400/20 border border-gray-700 hover:border-gray-400 text-sm"
                                 >
                                     {ep.number}
                                 </Link>

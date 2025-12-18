@@ -35,7 +35,7 @@ async function SearchResults({ query }: { query: string }) {
     return (
         <>
             <p className="text-gray-400 mb-6">
-                Ditemukan <span className="text-purple-400 font-semibold">{results.length}</span> anime
+                Ditemukan <span className="text-white font-semibold">{results.length}</span> anime
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 {results.map((anime) => (
@@ -65,12 +65,12 @@ export default async function SearchPage({ searchParams }: Props) {
             {/* Breadcrumb */}
             <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center gap-2 text-sm text-gray-400">
-                    <Link href="/" className="hover:text-purple-400 flex items-center gap-1">
+                    <Link href="/" className="hover:text-white flex items-center gap-1">
                         <Home className="w-4 h-4" />
                         Home
                     </Link>
                     <ChevronRight className="w-4 h-4" />
-                    <span className="text-purple-300">Search</span>
+                    <span className="text-white">Search</span>
                 </div>
             </nav>
 
@@ -78,12 +78,12 @@ export default async function SearchPage({ searchParams }: Props) {
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold flex items-center gap-3">
-                        <Search className="w-8 h-8 text-purple-400" />
+                        <Search className="w-8 h-8 text-white" />
                         Pencarian
                     </h1>
                     {query && (
                         <p className="text-gray-400 mt-2">
-                            Hasil untuk: <span className="text-purple-400 font-semibold">"{query}"</span>
+                            Hasil untuk: <span className="text-white font-semibold">"{query}"</span>
                         </p>
                     )}
                 </div>

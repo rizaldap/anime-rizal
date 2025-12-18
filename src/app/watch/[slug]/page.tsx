@@ -62,15 +62,15 @@ export default async function WatchPage({ params, searchParams }: Props) {
             {/* Breadcrumb */}
             <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center gap-2 text-sm text-gray-400">
-                    <Link href="/" className="hover:text-purple-400 flex items-center gap-1">
+                    <Link href="/" className="hover:text-white flex items-center gap-1">
                         <Home className="w-4 h-4" />
                     </Link>
                     <ChevronRight className="w-4 h-4" />
-                    <Link href={`/anime/${slug}`} className="hover:text-purple-400 truncate max-w-[150px]">
+                    <Link href={`/anime/${slug}`} className="hover:text-white truncate max-w-[150px]">
                         {anime.title}
                     </Link>
                     <ChevronRight className="w-4 h-4" />
-                    <span className="text-purple-300">
+                    <span className="text-white">
                         {currentEpisode ? `Episode ${currentEpisode.number}` : "Watch"}
                     </span>
                 </div>
@@ -99,7 +99,7 @@ export default async function WatchPage({ params, searchParams }: Props) {
 
                             <div className="text-center">
                                 <h1 className="font-bold text-lg">{anime.title}</h1>
-                                <p className="text-purple-400">
+                                <p className="text-white">
                                     Episode {currentEpisode?.number || "?"}
                                 </p>
                             </div>
@@ -120,13 +120,13 @@ export default async function WatchPage({ params, searchParams }: Props) {
                         {/* Info Card */}
                         <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 border border-gray-800">
                             <h2 className="font-semibold mb-2 flex items-center gap-2">
-                                <Film className="w-4 h-4 text-purple-400" />
+                                <Film className="w-4 h-4 text-white" />
                                 {anime.title}
                             </h2>
                             <p className="text-gray-400 text-sm line-clamp-3">
                                 {anime.synopsis || "Sinopsis tidak tersedia."}
                             </p>
-                            <Link href={`/anime/${slug}`} className="text-purple-400 text-sm hover:underline mt-2 inline-block">
+                            <Link href={`/anime/${slug}`} className="text-white text-sm hover:underline mt-2 inline-block">
                                 Lihat detail →
                             </Link>
                         </div>
@@ -137,7 +137,7 @@ export default async function WatchPage({ params, searchParams }: Props) {
                         <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 sticky top-20">
                             <div className="p-4 border-b border-gray-800">
                                 <h3 className="font-semibold flex items-center gap-2">
-                                    <List className="w-4 h-4 text-purple-400" />
+                                    <List className="w-4 h-4 text-white" />
                                     Episode List
                                     <Badge variant="secondary">{episodes.length}</Badge>
                                 </h3>
@@ -148,7 +148,7 @@ export default async function WatchPage({ params, searchParams }: Props) {
                                         key={episode.id}
                                         href={`/watch/${slug}?ep=${episode.slug}`}
                                         className={`block px-4 py-3 rounded-lg transition-all ${episode.slug === currentEpSlug
-                                                ? "bg-purple-600 text-white"
+                                                ? "bg-gray-700 text-white"
                                                 : "hover:bg-gray-800 text-gray-300"
                                             }`}
                                     >
