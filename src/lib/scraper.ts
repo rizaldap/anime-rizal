@@ -138,28 +138,40 @@ export async function getAnimeDetail(slug: string): Promise<Anime | null> {
 
         // Generate episodes based on episode count
         const episodes: Episode[] = [];
-        const totalEpisodes = anime.episodes || 0;
+        let totalEpisodes = anime.episodes || 0;
 
-        if (totalEpisodes > 0) {
-            for (let i = 1; i <= Math.min(totalEpisodes, 500); i++) {
-                episodes.push({
-                    id: String(i),
-                    slug: `${i}`,
-                    number: String(i),
-                    title: `Episode ${i}`,
-                });
-            }
-        } else {
-            // Ongoing anime - show up to 100 episodes
-            for (let i = 1; i <= 50; i++) {
-                episodes.push({
-                    id: String(i),
-                    slug: `${i}`,
-                    number: String(i),
-                    title: `Episode ${i}`,
-                });
+        // For ongoing anime, try to get actual episode count from episodes endpoint
+        if (totalEpisodes === 0 || anime.airing) {
+            try {
+                // Jikan has an episodes endpoint that shows aired episodes
+                const epsResponse = await fetchWithTimeout(`${JIKAN_API_BASE}/anime/${malId}/episodes?page=1`);
+                if (epsResponse) {
+                    const epsJson = await epsResponse.json();
+                    const pagination = epsJson.pagination || {};
+                    // Use items.total which gives the actual aired episode count
+                    if (pagination.items?.total) {
+                        totalEpisodes = pagination.items.total;
+                    }
+                }
+            } catch (e) {
+                console.warn("[Jikan] Could not fetch episodes count:", e);
             }
         }
+
+        // Generate episode list
+        // For very long anime (like One Piece), cap at 2000 to avoid performance issues
+        const maxEpisodes = Math.min(totalEpisodes || 1200, 2000);
+
+        for (let i = 1; i <= maxEpisodes; i++) {
+            episodes.push({
+                id: String(i),
+                slug: `${i}`,
+                number: String(i),
+                title: `Episode ${i}`,
+            });
+        }
+
+        console.log(`[Jikan] ${anime.title}: ${episodes.length} episodes (status: ${anime.status})`);
 
         return {
             id: slug,
